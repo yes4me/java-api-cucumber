@@ -81,6 +81,9 @@ Personal projects code: https://github.com/yes4me
         * System Variables/PATH **contains** "%MAVEN_HOME%\bin"
     * Console command: `mvn -version`
     * Result: Display on the console 'Apache Maven 3.3.9 ...'
+5. Create the file: src\main\java\com\thomas\config\config.properties
+    API_URL_WEATHER=http://api.openweathermap.org/data/2.5/weather
+    API_KEY_WEATHER=[insert your key]
 
 ## Running the program
 ---
