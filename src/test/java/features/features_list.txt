@@ -1,0 +1,6 @@
+Scenario: [Test#1.1] Testing cucumber (Java)
+Scenario: [Test#2.1] Testing lambda expression (Java8)
+Scenario: [Test#2.2] Testing lambda expression (Java8)
+Scenario: [Test#3.1] Test the weather HTTP Status
+Scenario: [Test#3.2] Test the weather API output coordinates
+Scenario: [Test#3.3] Test the weather API output location

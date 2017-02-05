@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Simple HTML-XML Suite">
+
+    <test name="Simple HTML-XML test">
+        <parameter name="WEATHER_API_KEY" value="ddefd047141106a919b41d34685de66d"/>
+        <parameter name="CITY_NAME" value="London"/>
+
+        <!--Filter the test groups that will run -->
+        <groups>
+            <!-- Select the METAGROUP to run -->
+            <run>
+                <!--<include name="weather"/>-->
+                <include name="test"/>
+            </run>
+        </groups>
+
+        <!-- List of all the classes that MAY run -->
+        <classes>
+            <class name="tmp_tests.WeatherRestTest" />
+        </classes>
+    </test>
+</suite>
