@@ -4,3 +4,7 @@ Scenario: [Test#2.2] Testing lambda expression (Java8)
 Scenario: [Test#3.1] Test the weather HTTP Status
 Scenario: [Test#3.2] Test the weather API output coordinates
 Scenario: [Test#3.3] Test the weather API output location
+Scenario: [Test#4.1] Test INSERT on JSON REST server
+Scenario: [Test#4.2] Test UPDATE on JSON REST server
+Scenario: [Test#4.3] Test PATCH on JSON REST server
+Scenario: [Test#4.4] Test DELETE on JSON REST server

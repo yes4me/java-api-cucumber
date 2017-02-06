@@ -10,6 +10,7 @@ import java.util.Map;
 public class Settings {
     final static String CONFIG_FILENAME = "src/main/java/com/thomas/config/config.properties";
 
+    public static String api_url_jsonserver;
     public static String api_url_weather;
     public static String api_key_weather;
     public static String db_host;
@@ -20,6 +21,7 @@ public class Settings {
     public static void populateSettings(String filename) {
         Map<String, String> data = PropertiesUtil.getAllProperties(filename);
 
+        Settings.api_url_jsonserver= data.get("API_URL_JSONSERVER");
         Settings.api_url_weather= data.get("API_URL_WEATHER");
         Settings.api_key_weather= data.get("API_KEY_WEATHER");
         Settings.db_host        = data.get("DB_HOST");
@@ -37,6 +39,7 @@ public class Settings {
 
     public static void main(String[] args) {
         populateSettings();
+        System.out.println("api_url_jsonserver = " + Settings.api_url_jsonserver);
         System.out.println("api_url_weather = " + Settings.api_url_weather);
         System.out.println("api_key_weather = " + Settings.api_key_weather);
         System.out.println("db_host = "     + Settings.db_host);

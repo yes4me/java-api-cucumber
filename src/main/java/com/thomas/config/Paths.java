@@ -22,11 +22,6 @@ public class Paths {
         return getPath("src/test/java/data/", file);
     }
 
-    // For Selenium webdriver
-    public static String getVendorPath(String... file) {
-        return getPath("vendor/", file);
-    }
-
     /* -----------------------------------------------------
     For testing purpose
     ----------------------------------------------------- */
@@ -34,7 +29,5 @@ public class Paths {
     public static void main(String[] args) {
         System.out.println( getPropertiesPath() );
         System.out.println( getDataPath() );
-        System.out.println( getVendorPath() );
-        System.out.println( getVendorPath("test.exe") );
     }
 }

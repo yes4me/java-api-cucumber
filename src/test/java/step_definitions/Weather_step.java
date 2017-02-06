@@ -16,14 +16,13 @@ import java.util.Map;
  */
 public class Weather_step implements En {
     Response api_response = null;
-    String json_path = "";
 
     public Weather_step() {
         /* -----------------------------------------------------
         Setters
         ----------------------------------------------------- */
 
-        Given("^user connects to the weather API using the parameters:$", (DataTable table) -> {
+        Given("^user connects to the weather REST server using the parameters:$", (DataTable table) -> {
             final String api_url = Settings.api_url_weather;
             final String api_key = Settings.api_key_weather;
             String api_parameters = "";
@@ -31,8 +30,8 @@ public class Weather_step implements En {
             CucumberUtil.set(table);
             Map<String, String> data = CucumberUtil.get();
             for (Map.Entry<String, String> entry : data.entrySet()) {
-                String key = entry.getKey().toString();
-                String value = entry.getValue().toString();
+                String key = entry.getKey();
+                String value = entry.getValue();
                 api_parameters += "&" + key + "=" + value;
             }
             api_parameters = api_parameters.replaceAll("\\[API_KEY\\]", api_key);
@@ -43,24 +42,22 @@ public class Weather_step implements En {
             api_response = RestAssured.when().get(url);
         });
 
-        And("^user use the following JSON path: \"([^\"]*)\"$", (String path) -> {
-            json_path = path;
-        });
-
         /* -----------------------------------------------------
         For testing purpose
         ----------------------------------------------------- */
 
-        Then("^check for HTTP status \"([^\"]*)\"$", (String statusCode) -> {
+        Then("^checks for HTTP status \"([^\"]*)\" \\(weather REST server\\)$", (String statusCode) -> {
+            // System.out.println("HTTP=" + statusCode);
             Assert.assertEquals(api_response.getStatusCode(), Integer.parseInt(statusCode));
         });
 
-        Then("^check for output \"([^\"]*)\"$", (String expectedOutput) -> {
+        Then("^checks JSON \"([^\"]*)\" to be \"([^\"]*)\" \\(weather REST server\\)$", (String jsonPath, String expectedOutput) -> {
+            // System.out.println(jsonPath +"___"+ expectedOutput);
             String weatherData = api_response
                 .then()
                     .contentType(ContentType.JSON)
                     .extract()
-                    .path(json_path).toString();
+                    .path(jsonPath).toString();
             Assert.assertEquals(weatherData, expectedOutput);
         });
     }

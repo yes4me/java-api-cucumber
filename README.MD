@@ -159,8 +159,8 @@ src/main/resources/log4g2.xml for saving the log into a file named after the cur
 
     * [git](https://git-scm.com/)
     * [Java Development Kit (JDK)/Java SE](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
-    * [Official Selenium HQ Drivers](http://www.seleniumhq.org/download/)
     * [Maven repository](https://mvnrepository.com/)
+    * [REST server](https://github.com/typicode/json-server)
     * [TestNG](http://TestNG.org/doc/download.html)
 
 * References:
@@ -171,4 +171,5 @@ src/main/resources/log4g2.xml for saving the log into a file named after the cur
 
     * [Java SE 8 API Documentation](https://docs.oracle.com/javase/8/docs/api/)
     * [JSON viewer](http://www.jsoneditoronline.org/)
+    * [REST response](https://github.com/rest-assured/rest-assured)
     * [Regex](https://regex101.com/)

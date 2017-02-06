@@ -1,11 +1,11 @@
 Feature: Test the weather
   Documentation: http://openweathermap.org/current
 
-  Scenario Outline: [Test#3.1] Test the weather HTTP Status
-    Given user connects to the weather API using the parameters:
+  Scenario Outline: [Test#3.1] Test the weather REST server HTTP Status
+    Given user connects to the weather REST server using the parameters:
       | APPID | <api_key> |
       | q     | <city>    |
-    Then check for HTTP status "<status>"
+    Then checks for HTTP status "<status>" (weather REST server)
 
     Examples:
       | city   | api_key   | status | http_definitions |
@@ -14,26 +14,24 @@ Feature: Test the weather
       | London | abc       | 401    | Unauthorized     |
       |        | [API_KEY] | 502    | Bad Gateway      |
 
-  Scenario Outline: [Test#3.2] Test the weather API output coordinates
-    Given user connects to the weather API using the parameters:
+  Scenario Outline: [Test#3.2] Test the weather REST server coordinates
+    Given user connects to the weather REST server using the parameters:
       | APPID | [API_KEY] |
       | q     | London    |
-    And user use the following JSON path: "<path>"
-    Then check for output "<result>"
+    Then checks JSON "<path>" to be "<result>" (weather REST server)
 
     Examples:
-      | path                   | result     |
-      | coord.lat              | 51.51      |
-      | coord.lon              | -0.13      |
+      | path      | result |
+      | coord.lat | 51.51  |
+      | coord.lon | -0.13  |
       #| weather[0].description | light rain | ==> get the info from the DB
 
-  Scenario Outline: [Test#3.3] Test the weather API output location
-    Given user connects to the weather API using the parameters:
+  Scenario Outline: [Test#3.3] Test the weather REST server location
+    Given user connects to the weather REST server using the parameters:
       | APPID | [API_KEY] |
       | lat   | 51.51     |
       | lon   | -0.13     |
-    And user use the following JSON path: "<path>"
-    Then check for output "<result>"
+    Then checks JSON "<path>" to be "<result>" (weather REST server)
 
     Examples:
       | path | result |

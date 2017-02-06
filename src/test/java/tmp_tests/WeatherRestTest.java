@@ -15,7 +15,7 @@ import org.testng.annotations.Test;
 
 public class WeatherRestTest {
     @Parameters({"WEATHER_API_KEY", "CITY_NAME"})
-    @Test(testName = "HttpStatusPass", description = "Get the weather", enabled = true, groups = {"weather"})
+    @Test(testName = "HttpStatusPass", description = "Check the HTTP request for weather API", enabled = true, groups = {"weather"})
     public void getHttpRequestPass(String API_KEY, String cityName) {
         final int expectedStatus = 200;
 
@@ -52,10 +52,8 @@ public class WeatherRestTest {
     }
 
     @Parameters({"WEATHER_API_KEY", "CITY_NAME"})
-    @Test(testName = "HttpStatusPass", description = "Fail to get the weather with no API key", enabled = true, groups = {"test"})
+    @Test(testName = "HttpStatusPass", description = "Get the weather description", enabled = true, groups = {"weather"})
     public void getWeatherDescription(String API_KEY, String cityName) {
-        System.out.println("Test");
-
         final String API_CALL = "http://api.openweathermap.org/data/2.5/weather";
         String weatherDescription = RestAssured
             .given()
