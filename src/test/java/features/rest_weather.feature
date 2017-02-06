@@ -1,12 +1,12 @@
 @weather
-Feature: Test the weather
+Feature: Test the free weather Rest server
   Documentation: http://openweathermap.org/current
 
   Scenario Outline: [Test#3.1] Test the weather REST server HTTP Status
     Given user connects to the weather REST server using the parameters:
       | APPID | <api_key> |
       | q     | <city>    |
-    Then checks for HTTP status "<status>" (weather REST server)
+    Then checks HTTP status "<status>" (weather REST server)
 
     Examples:
       | city   | api_key   | status | http_definitions |
@@ -37,3 +37,14 @@ Feature: Test the weather
     Examples:
       | path | result |
       | name | London |
+
+  Scenario Outline: [Test#3.4] Test the weather REST server response time
+    Given user connects to the weather REST server using the parameters:
+      | APPID | <api_key> |
+      | q     | <city>    |
+    Then checks response time to be less than "<time>" ms (weather REST server)
+
+    Examples:
+      | city   | time |
+      | London | 1500 |
+      | Paris  | 500  |

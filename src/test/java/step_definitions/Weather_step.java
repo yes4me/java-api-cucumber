@@ -6,6 +6,7 @@ import com.jayway.restassured.response.Response;
 import com.thomas.config.Settings;
 import com.thomas.utilities.CucumberUtil;
 import cucumber.api.DataTable;
+import cucumber.api.PendingException;
 import cucumber.api.java8.En;
 import org.testng.Assert;
 
@@ -46,7 +47,7 @@ public class Weather_step implements En {
         For testing purpose
         ----------------------------------------------------- */
 
-        Then("^checks for HTTP status \"([^\"]*)\" \\(weather REST server\\)$", (String statusCode) -> {
+        Then("^checks HTTP status \"([^\"]*)\" \\(weather REST server\\)$", (String statusCode) -> {
             // System.out.println("HTTP=" + statusCode);
             Assert.assertEquals(api_response.getStatusCode(), Integer.parseInt(statusCode));
         });
@@ -59,6 +60,15 @@ public class Weather_step implements En {
                     .extract()
                     .path(jsonPath).toString();
             Assert.assertEquals(weatherData, expectedOutput);
+        });
+        Then("^checks response time to be less than \"([^\"]*)\" ms \\(weather REST server\\)$", (String timeout) -> {
+            Long responseTime = api_response
+                .then()
+                    .contentType(ContentType.JSON)
+                    .extract()
+                    .time();
+            System.out.println("responseTime =" + responseTime);
+            Assert.assertTrue(responseTime <= Integer.valueOf(timeout));
         });
     }
 }

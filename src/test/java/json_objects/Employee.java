@@ -4,7 +4,8 @@ package json_objects;
  * Created by Thomas on 02/05/2017.
  */
 public class Employee {
-    // Create more subclasses if needed
+    // Create more subclasses if needed.
+    // If you need an array: employee.set( new Engineer[]{eng1, eng2} );
     private String id = "";
     private String name = "";
     private String salary = "";

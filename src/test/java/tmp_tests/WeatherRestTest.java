@@ -52,7 +52,7 @@ public class WeatherRestTest {
     }
 
     @Parameters({"WEATHER_API_KEY", "CITY_NAME"})
-    @Test(testName = "HttpStatusPass", description = "Get the weather description", enabled = true, groups = {"weather"})
+    @Test(testName = "HttpStatusPass", description = "Get the weather description", enabled = true, groups = {"test"})
     public void getWeatherDescription(String API_KEY, String cityName) {
         final String API_CALL = "http://api.openweathermap.org/data/2.5/weather";
         String weatherDescription = RestAssured
@@ -66,5 +66,17 @@ public class WeatherRestTest {
                 .extract()
                 .path("weather[0].description");
         System.out.println("weatherDescription="+ weatherDescription +"##");
+
+        Long time = RestAssured
+            .given()
+                .param("q", cityName)
+                .param("APPID", API_KEY)
+            .when()
+                .get(API_CALL)
+            .then()
+                .contentType(ContentType.JSON)
+                .extract()
+                .time();
+        System.out.println("time="+ time +"##");
     }
 }
