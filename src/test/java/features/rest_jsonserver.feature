@@ -1,4 +1,11 @@
+@jsonserver
 Feature: Test the JSON server
+  Steps:
+  - install NodeJs
+  - install json-server: npm install -g json-server
+  - Command line: go to src/test/java/data/
+  - Command line: json-server --watch db.json
+  - Then you can run the following tests
   Documentation: https://github.com/typicode/json-server
 
   Scenario Outline: [Test#4.1] Test INSERT on JSON REST server
@@ -10,11 +17,11 @@ Feature: Test the JSON server
     Then check for HTTP status "<status>"
 
     Examples:
-      | id | name  | salary   | status | http_definitions                    |
-      | 1  | name1 | $100,000 | 201    | Created                             |
-      | 2  | name2 |          | 201    | Created                             |
-      | 3  |       | $300,000 | 201    | Created                             |
-      | 3  | name3 | $300,000 | 500    | Error: Insert failed; duplicate id. |
+      | id | name  | salary   | status | http_definitions                   |
+      | 1  | name1 | $100,000 | 201    | Created                            |
+      | 2  | name2 |          | 201    | Created                            |
+      | 3  |       | $300,000 | 201    | Created                            |
+      | 3  | name3 | $300,000 | 500    | Error: Insert failed; duplicate id |
 
   Scenario Outline: [Test#4.2] Test UPDATE on JSON REST server
     Given user sets the Employee variables:

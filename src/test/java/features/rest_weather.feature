@@ -1,3 +1,4 @@
+@weather
 Feature: Test the weather
   Documentation: http://openweathermap.org/current
 
