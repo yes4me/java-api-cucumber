@@ -1,4 +1,4 @@
-# API Test Framework
+# REST API Framework
 
 ## Preface
 ---
@@ -28,7 +28,10 @@ This document will show you how to:
 
 Hello,
 
-Thank you for having a look at my API framework written in Java. You can download the latest code at my [repository](https://github.com/yes4me). Feel free to comment. Nobody can improve without feedback. Thank you in advance. 
+Thank you for having a look at my API framework written in Java.
+You can download the latest code at my [repository](https://github.com/yes4me).
+Here is the overview [video](https://youtu.be/eZVoWyzKktI) about this project.
+Feel free to comment. Nobody can improve without feedback. Thank you in advance.
 
 Sincerely,
 
@@ -52,12 +55,10 @@ Personal projects code: https://github.com/yes4me
     * cucumber-java: to run Cucumber
     * cucumber-java8: to use lambda expression, which simplify writing code  
     * cucumber-TestNG: to run TestNG tests on cucumber
-    * TestNG: to run TestNG tests on the browser
+    * TestNG: to run TestNG tests REST API webservices
     * rest-assured: to test and validate REST services
     * json-path: to read JSON documents
     * json-schema-validator: to validate JSON documents
-3. Optional Dependencies:
-    * log4j-core and log4j-api: to generate log files
 
 ## Setup
 ---
@@ -89,10 +90,12 @@ Personal projects code: https://github.com/yes4me
 ---
 
 1. Run Java code: src\main\java\com\thomas\HelloWorld.java
-2. Run src\test\java\features\test_cucumber from IntelliJ
-3. Run src\test\java\features\test_cucumber8 from IntelliJ
-4. Run src\test\java\tmp_tests\WeatherRestTest from IntelliJ
-5. Run src\test\java\features\rest_weather from IntelliJ
+2. Run src\test\java\features\test_cucumber.feature from IntelliJ
+3. Run src\test\java\features\test_cucumber8.feature from IntelliJ
+4. Run src\test\java\tmp_tests\WeatherRestTest.java from IntelliJ
+5. Run src\test\java\features\rest_weather.feature from IntelliJ
+6. (optional) Run src\test\java\features\rest_jsonserver.feature from IntelliJ
+7. Run src\test\java\features\rest_httpbin.feature from IntelliJ
 
 ## Uninstall
 ---
@@ -166,9 +169,11 @@ src/main/resources/log4g2.xml for saving the log into a file named after the cur
 * References:
 
     * [Java: Automate WebServices Rest API (testing) using Java](https://www.udemy.com/automate-webservices-rest-api-testing-using-java/learn/v4/content)
+    * [REST webservice](http://httpbin.org/)
 
 * Others:
 
+    * [Overview video about this project](https://youtu.be/eZVoWyzKktI)
     * [Java SE 8 API Documentation](https://docs.oracle.com/javase/8/docs/api/)
     * [JSON viewer](http://www.jsoneditoronline.org/)
     * [REST response](https://github.com/rest-assured/rest-assured)

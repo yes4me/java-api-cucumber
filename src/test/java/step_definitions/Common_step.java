@@ -25,32 +25,38 @@ public class Common_step implements En {
 
         Given("^user connects to the \"([^\"]*)\"$", (String url) -> {
             // GET request
-            apiResponse = RestAssured.when().get(url);
-            Assert.assertEquals(apiResponse.getStatusCode(), 200);
+            apiResponse = RestAssured
+                .when()
+                    .get(url);
         });
 
         Given("^user connects to \"([^\"]*)\" using with body \"([^\"]*)\"$", (String url, String jsonBody) -> {
             // POST request
             jsonBody = jsonBody.replaceAll("'", "\"");
-            jsonBody = "{ \"hello\" : \"world\" }";
-            url = "http://httpbin.org/post";
-            System.out.println("##"+ jsonBody +"##");
             apiResponse = RestAssured
-                    .given()
+                .given()
                     .body(jsonBody)
-                    .when()
+                .when()
                     .contentType(ContentType.JSON)
                     .post(url);
-            Assert.assertEquals(apiResponse.getStatusCode(), 200);
-            System.out.println("HTTP status code:"+ apiResponse.getStatusCode() );
         });
 
         /* -----------------------------------------------------
         For testing purpose
         ----------------------------------------------------- */
 
-        Then("^print the response$", () -> {
+        Then("^print the response body$", () -> {
             System.out.println("REST response:"+ apiResponse.asString());
+        });
+        Then("^print the response HTTP status code$", () -> {
+            System.out.println("HTTP status code:"+ apiResponse.getStatusCode() );
+        });
+        Then("^print the response headers$", () -> {
+            System.out.println("Response headers:");
+            System.out.println(apiResponse.getHeaders());
+        });
+        Then("^check the HTTP status \"([^\"]*)\"$", (String httpStatus) -> {
+            Assert.assertEquals(apiResponse.getStatusCode(), Integer.parseInt(httpStatus));
         });
     }
 }

@@ -1,12 +1,13 @@
 package com.thomas.config;
 
+import com.sun.xml.internal.ws.api.config.management.policy.ManagementAssertion;
 import com.thomas.utilities.PropertiesUtil;
 
 import java.util.Map;
 
 /**
  * Created by Thomas on 12/19/2016.
- */
+  */
 public class Settings {
     final static String CONFIG_FILENAME = "src/main/java/com/thomas/config/config.properties";
 
