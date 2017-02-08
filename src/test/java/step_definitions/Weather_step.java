@@ -16,7 +16,7 @@ import java.util.Map;
  * Created by Thomas on 02/04/2017.
  */
 public class Weather_step implements En {
-    Response api_response = null;
+    Response apiResponse = null;
 
     public Weather_step() {
         /* -----------------------------------------------------
@@ -40,7 +40,7 @@ public class Weather_step implements En {
 
             String url = api_url + "?" + api_parameters;
             // System.out.println("url=" + url);
-            api_response = RestAssured.when().get(url);
+            apiResponse = RestAssured.when().get(url);
         });
 
         /* -----------------------------------------------------
@@ -49,12 +49,12 @@ public class Weather_step implements En {
 
         Then("^checks HTTP status \"([^\"]*)\" \\(weather REST server\\)$", (String statusCode) -> {
             // System.out.println("HTTP=" + statusCode);
-            Assert.assertEquals(api_response.getStatusCode(), Integer.parseInt(statusCode));
+            Assert.assertEquals(apiResponse.getStatusCode(), Integer.parseInt(statusCode));
         });
 
         Then("^checks JSON \"([^\"]*)\" to be \"([^\"]*)\" \\(weather REST server\\)$", (String jsonPath, String expectedOutput) -> {
             // System.out.println(jsonPath +"___"+ expectedOutput);
-            String weatherData = api_response
+            String weatherData = apiResponse
                 .then()
                     .contentType(ContentType.JSON)
                     .extract()
@@ -62,7 +62,7 @@ public class Weather_step implements En {
             Assert.assertEquals(weatherData, expectedOutput);
         });
         Then("^checks response time to be less than \"([^\"]*)\" ms \\(weather REST server\\)$", (String timeout) -> {
-            Long responseTime = api_response
+            Long responseTime = apiResponse
                 .then()
                     .contentType(ContentType.JSON)
                     .extract()

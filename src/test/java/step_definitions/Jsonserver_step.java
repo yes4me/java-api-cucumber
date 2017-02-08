@@ -18,7 +18,7 @@ import java.util.Map;
  * Created by Thomas on 02/04/2017.
  */
 public class Jsonserver_step implements En {
-    Response api_response = null;
+    Response apiResponse = null;
     String json_path = "";
 
     public Jsonserver_step() {
@@ -51,46 +51,46 @@ public class Jsonserver_step implements En {
             // POST = INSERT by object
             final String api_url = Settings.api_url_jsonserver;
 
-            api_response = RestAssured
+            apiResponse = RestAssured
                 .given()
                     .body(employee)
                 .when()
                     .contentType(ContentType.JSON)
                     .post(api_url);
-            // System.out.println("response:"+ api_response.asString());
+            // System.out.println("response:"+ apiResponse.asString());
         });
 
         When("^user updates to the JSON REST server on position \"([^\"]*)\"$", (String position) -> {
             // UPDATE = update requires to fully set Employee
             final String api_url = Settings.api_url_jsonserver + "/" + position;
 
-            api_response = RestAssured
+            apiResponse = RestAssured
                 .given()
                     .body(employee)
                 .when()
                     .contentType(ContentType.JSON)
                     .put(api_url);
-            // System.out.println("response:"+ api_response.asString());
+            // System.out.println("response:"+ apiResponse.asString());
         });
 
         Given("^user patches to the JSON REST server on position \"([^\"]*)\" using \"([^\"]*)\"$", (String position, String data) -> {
             // PATCHES = update Employee partially
             final String api_url = Settings.api_url_jsonserver + "/" + position;
             data = data.replaceAll("'", "\"");
-            api_response = RestAssured
+            apiResponse = RestAssured
                 .given()
                     .body(data)
                 .when()
                     .contentType(ContentType.JSON)
                     .patch(api_url);
-            // System.out.println("response:"+ api_response.asString());
+            // System.out.println("response:"+ apiResponse.asString());
         });
 
         Given("^user deletes data \"([^\"]*)\" to the JSON REST server$", (String position) -> {
             // DELETE by url
             final String api_url = Settings.api_url_jsonserver + "/" + position;
 
-            api_response = RestAssured
+            apiResponse = RestAssured
                 .when()
                     .delete(api_url);
         });
@@ -100,7 +100,7 @@ public class Jsonserver_step implements En {
         ----------------------------------------------------- */
 
         Then("^check for HTTP status \"([^\"]*)\"$", (String statusCode) -> {
-            Assert.assertEquals(api_response.getStatusCode(), Integer.parseInt(statusCode));
+            Assert.assertEquals(apiResponse.getStatusCode(), Integer.parseInt(statusCode));
         });
     }
 }

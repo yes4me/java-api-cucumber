@@ -24,10 +24,10 @@ public class JsonServer {
         // POST=INSERT by String
         /*
         String url = "http://localhost:3000/posts";
-        String body = "{\"id\":\"1\", \"name\":\"name1\", \"salary\":\"10000\"}";
+        String jsonBody = "{\"id\":\"1\", \"name\":\"name1\", \"salary\":\"10000\"}";
         Response response = RestAssured
             .given()
-                .body(body)
+                .body(jsonBody)
             .when()
                 .contentType(ContentType.JSON)
                 .post(url);

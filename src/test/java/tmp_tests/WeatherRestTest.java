@@ -65,7 +65,7 @@ public class WeatherRestTest {
                 .contentType(ContentType.JSON)
                 .extract()
                 .path("weather[0].description");
-        System.out.println("weatherDescription="+ weatherDescription +"##");
+        System.out.println("weatherDescription=" + weatherDescription + "##");
 
         Long time = RestAssured
             .given()
@@ -77,6 +77,6 @@ public class WeatherRestTest {
                 .contentType(ContentType.JSON)
                 .extract()
                 .time();
-        System.out.println("time="+ time +"##");
+        System.out.println("time=" + time + "##");
     }
 }

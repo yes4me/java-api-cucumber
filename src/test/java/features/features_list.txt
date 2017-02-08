@@ -8,3 +8,5 @@ Scenario: [Test#4.1] Test INSERT on JSON REST server
 Scenario: [Test#4.2] Test UPDATE on JSON REST server
 Scenario: [Test#4.3] Test PATCH on JSON REST server
 Scenario: [Test#4.4] Test DELETE on JSON REST server
+Scenario: [Test#5.1] Test the GET request of httpbin.org
+Scenario: [Test#5.2] Test the POST request of httpbin.org
